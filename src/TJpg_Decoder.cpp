@@ -66,7 +66,7 @@ void TJpg_Decoder::setJpgScale(uint8_t scaleFactor)
 ** Function name:           setCallback
 ** Description:             Set the sketch callback function to render decoded blocks
 ***************************************************************************************/
-void TJpg_Decoder::setCallback(SketchCallback sketchCallback)
+void TJpg_Decoder::setCallback(std::function < bool(int16_t x, int16_t y, uint16_t w, uint16_t h, uint16_t *data)> sketchCallback)
 {
   tft_output = sketchCallback;
 }
