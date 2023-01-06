@@ -65,7 +65,7 @@ public:
   static unsigned int jd_input(JDEC* jdec, uint8_t* buf, unsigned int len);
 
   void setJpgScale(uint8_t scale);
-  void setCallback(std::function<bool(int16_t x, int16_t y, uint16_t w, uint16_t h, uint16_t *data)> sketchCallback);
+  void setCallback(std::function<bool(int16_t x, int16_t y, uint16_t w, uint16_t h, uint8_t *data)> sketchCallback);
 
 #if defined (TJPGD_LOAD_SD_LIBRARY) || defined (TJPGD_LOAD_FFS)
   JRESULT drawJpg (int32_t x, int32_t y, const char *pFilename);
@@ -116,7 +116,7 @@ public:
 
   uint8_t jpgScale = 0;
 
-  std::function<bool(int16_t x, int16_t y, uint16_t w, uint16_t h, uint16_t *data)> tft_output = nullptr;
+  std::function<bool(int16_t x, int16_t y, uint16_t w, uint16_t h, uint8_t *data)> tft_output = nullptr;
 
   TJpg_Decoder *thisPtr = nullptr;
 };

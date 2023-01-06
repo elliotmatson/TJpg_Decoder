@@ -66,7 +66,7 @@ void TJpg_Decoder::setJpgScale(uint8_t scaleFactor)
 ** Function name:           setCallback
 ** Description:             Set the sketch callback function to render decoded blocks
 ***************************************************************************************/
-void TJpg_Decoder::setCallback(std::function < bool(int16_t x, int16_t y, uint16_t w, uint16_t h, uint16_t *data)> sketchCallback)
+void TJpg_Decoder::setCallback(std::function < bool(int16_t x, int16_t y, uint16_t w, uint16_t h, uint8_t *data)> sketchCallback)
 {
   tft_output = sketchCallback;
 }
@@ -152,7 +152,7 @@ int TJpg_Decoder::jd_output(JDEC* jdec, void* bitmap, JRECT* jrect)
   uint16_t h = jrect->bottom + 1 - jrect->top;
 
   // Pass the image block and rendering parameters in a callback to the sketch
-  return thisPtr->tft_output(x, y, w, h, (uint16_t*)bitmap);
+  return thisPtr->tft_output(x, y, w, h, (uint8_t*)bitmap);
 }
 
 
